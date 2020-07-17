@@ -112,5 +112,16 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = '';
     });
 
+    
+{/* <input id="age" value="30"> */}
+var age = document.getElementById('age');
+
+function showUser(surname, name) {
+    alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+}
+showUser.apply(age, ['Днищенко', 'Алексей']);
+
+
+
 });
 
