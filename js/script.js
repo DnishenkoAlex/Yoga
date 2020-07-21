@@ -67,7 +67,7 @@ window.addEventListener('DOMContentLoaded', function() {
                         if(num <= 9) {
                             return '0' + num;
                         } else return num;
-                    };
+                    }
 
             hours.textContent = addZero(t.hours);
             minutes.textContent = addZero(t.minutes);
@@ -150,5 +150,60 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+
+
+//slider
+let slideIndex = 1, // переменная отвечает за то какой в данный момент показывается слаайдер
+slides = document.querySelectorAll('.slider-item'),//достаем сами картинки(слайды)
+prev = document.querySelector('.prev'),//стрелка назад
+next = document.querySelector('.next'),//стрелка вперед
+dotsWrap = document.querySelector('.slider-dots'),// точки обертка
+dots = document.querySelectorAll('.dot');// точки
+
+showSlides(slideIndex);
+
+function showSlides(n) {// показывает 
+
+if (n > slides.length) {//при нажатии стрелки вперед на последнем слайде следующим показывать первый в списке
+    slideIndex = 1;
+}
+if (n < 1) {//при нажатии стрелки назад на первом слайде следующим показывать последний в списке
+    slideIndex = slides.length;
+}
+
+slides.forEach((item) => item.style.display = 'none');// скрывает все слайны 
+dots.forEach((item) => item.classList.remove('dot-active'));//убирает клас актив со всех кнопок
+
+slides[slideIndex - 1].style.display = 'block';//конвертация нормальной нумирации слайдов в скриптовую
+dots[slideIndex - 1].classList.add('dot-active');// добавление класса актив к позазываемому слайду
+}
+
+
+
+function plusSlides(n) {//функция изменяет slideIndex и переключает на сл впереди слайд
+showSlides(slideIndex += n); 
+}
+function currentSlide(n) {//определяет текуший слайд и устанавливает его 
+showSlides(slideIndex = n);
+}
+
+prev.addEventListener('click', function() {// действие по клику переключение на предыдущий слайд
+plusSlides(-1);
+});
+
+next.addEventListener('click', function() {// переключение на следующий слайд
+plusSlides(1);
+});
+
+dotsWrap.addEventListener('click', function(event) {//(делегирование событий)используется обертка для того чтобы при доавлении новых точек они сразу выполняли теже функции
+for (let i = 0; i < dots.length + 1; i++) {
+    if (event.target.classList.contains('dot') && event.target == dots[i-1]) {//пр0оверка наличия класса dot и проверка какой номер у точки
+        currentSlide(i);
+    }
+}
+});
+
+
+    
 
 });
