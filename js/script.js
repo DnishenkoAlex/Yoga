@@ -154,11 +154,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
 //slider
 let slideIndex = 1, // переменная отвечает за то какой в данный момент показывается слаайдер
-slides = document.querySelectorAll('.slider-item'),//достаем сами картинки(слайды)
-prev = document.querySelector('.prev'),//стрелка назад
-next = document.querySelector('.next'),//стрелка вперед
-dotsWrap = document.querySelector('.slider-dots'),// точки обертка
-dots = document.querySelectorAll('.dot');// точки
+    slides = document.querySelectorAll('.slider-item'),//достаем сами картинки(слайды)
+    prev = document.querySelector('.prev'),//стрелка назад
+    next = document.querySelector('.next'),//стрелка вперед
+    dotsWrap = document.querySelector('.slider-dots'),// точки обертка
+    dots = document.querySelectorAll('.dot');// точки
 
 showSlides(slideIndex);
 
